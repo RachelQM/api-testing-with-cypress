@@ -23,6 +23,11 @@ jobs:
           paths:
             - ~/.npm
             - ~/.cache
+      - run: mkdir -p testing-apis-with-cypress/cypress/test-results testing-apis-with-cypress/cypress/test-results/screenshots
       - run: $(npm bin)/cypress run
+      - store_test_results:
+          path: testing-apis-with-cypress/cypress/test-results
       - store_artifacts:
           path: ~/repo/api-testing-with-cypress
+      - store_artifacts:
+          path: testing-apis-with-cypress/cypress/test-results/screenshots
